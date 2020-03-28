@@ -40,11 +40,11 @@ const criarCaso = async (req, res) => {
 
 const deletarCaso = async (req, res) => {
     let { id } = req.params;
-    let ong_id = req.headers.authorization;
+    let ongId = req.headers.authorization;
 
     let verificaCaso = await connection('incidentCasos').where('id', id).select('ong_id').first();
 
-    if (verificaCaso.ong_id != ong_id) {
+    if (verificaCaso.ong_id != ongId) {
         return res.status(401).json({ info: 'Ops! Você não está autorizado para esta operação!'})
     } 
     
